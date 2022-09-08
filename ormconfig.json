@@ -1,7 +1,7 @@
 {
-    "type": "sqlite",                                     "__comment__": "Qual é o tipo do nosso banco de dados",
-    "database": "./src/database/database.sqlite",                "__comment1__": "Onde vai ser criado nosso banco de dados",
-    "migrations": ["./src/database/migrations/*.ts"],             "__comment2__": "Em qual pasta está as nossas migrations que vamos rodar no sqlite",
+    "type": "sqlite",                                     
+    "database": "./src/database/database.sqlite",               
+    "migrations": ["./src/database/migrations/*.ts"],            
     "cli": {                                                       
         "migrationsDir": "./src/database/migrations/"        
     }
