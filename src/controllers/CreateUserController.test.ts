@@ -1,3 +1,4 @@
+import { getConnection } from 'typeorm';
 import createConnection from '../database'
 import { CreateUserController } from './CreateUserController';
 import { Request } from 'express'
@@ -5,12 +6,20 @@ import { makeMockResponse } from '../utils/mocks/MockResponse';
 
 
 describe('CreateUserController', () => {
-  
-    it('Deve retornar o id do usuário criado', async() => {
-     const connection = await createConnection()
-     await connection.runMigrations()
+    beforeAll(async () => {
+        const connection = await createConnection()
+        await connection.runMigrations()
+    })
 
-        const createUserController = new CreateUserController();
+    afterAll(async() => {
+        const connection = getConnection()
+        await connection.query('DELETE FROM usuarios')
+        await connection.close
+    })
+
+    const createUserController = new CreateUserController();
+    const response = makeMockResponse()
+    it('Deve retornar o status 201 quando o usuário for criado', async() => {
 
         const request = {
             body: {
@@ -19,12 +28,38 @@ describe('CreateUserController', () => {
             }
         } as Request
 
-        const response = makeMockResponse()
+        
 
-        const result = await createUserController.handle(request, response)
+        await createUserController.handle(request, response)
 
-        console.log(result)
+        expect(response.state.status).toBe(201)
 
+        })
+
+        it('Deve retornar status 400 quando o nome não for informado',async () => {
+            const request = {
+                body: {
+                    nome: '',
+                    email: 'email@email.com'
+                }
+            } as Request
+
+            await createUserController.handle(request, response)
+
+            expect(response.state.status).toBe(400)
+        })
+
+        it('Deve retornar status 201 quando o email não for informado',async () => {
+            const request = {
+                body: {
+                    nome: 'Aline',
+                    email: ''
+                }
+            } as Request
+
+            await createUserController.handle(request, response)
+
+            expect(response.state.status).toBe(201)
         })
     })
      

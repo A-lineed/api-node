@@ -12,7 +12,7 @@ class CreateUserController{
         const id = uuid();
 
         if (nome.length === 0) {
-            return response.status(400).json({mensagem: 'Preencha todos os campos'})
+            return response.status(400).json({mensagem: 'Nome obrigatório'})
         }
 
         const user = await createUserService.execute({id, nome, email});
