@@ -1,11 +1,10 @@
 {
   "name": "api-node",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev src/index.ts",
-    "test": "jest",
+    "test": "jest NODE_ENV='test'",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "repository": {
@@ -37,5 +36,6 @@
     "sqlite3": "^5.0.11",
     "typeorm": "^0.2.41",
     "uuid": "^9.0.0"
-  }
+  },
+  "description": ""
 }
