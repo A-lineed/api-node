@@ -1,4 +1,4 @@
-import { Entity, Column , PrimaryColumn} from "typeorm";
+import { Entity, Column, PrimaryColumn } from "typeorm";
 
 @Entity('usuarios')
 class Usuario {
@@ -13,4 +13,4 @@ class Usuario {
 
 }
 
-export {Usuario}
+export { Usuario }

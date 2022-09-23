@@ -5,7 +5,7 @@ const router = Router();
 const createUserController = new CreateUserController();
 
 router.get('/', (request: Request, response: Response) => {
-    return response.json({mensagem: 'Bem vindo a nossa DIO API'})
+    return response.json({ mensagem: 'Bem vindo a nossa DIO API' })
 
 })
 

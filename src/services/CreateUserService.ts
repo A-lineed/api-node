@@ -15,14 +15,15 @@ class CreateUserService {
             .insert()
             .into(Usuario)
             .values([
-               {
+                {
                     id: id,
                     nome: nome,
                     email: email
-               }
+                }
             ])
             .execute()
-        console.log(usuario)
+
+        console.log(usuario.identifiers[0])
         return usuario.identifiers[0]
     }
 }
