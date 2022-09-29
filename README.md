@@ -1,7 +1,7 @@
-Como inicializar a aplicação = npm run dev
+Como inicializar a aplicação: npm run dev
 
 _________________________________________________________________
-Como instanciar o banco de dados para = npm typeorm migration:run
+Como instanciar o banco de dados para: npm typeorm migration:run
 __________________________________________________________________
 
 Comandos uteis para criar o projeto do zero:
